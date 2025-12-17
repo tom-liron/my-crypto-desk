@@ -73,7 +73,8 @@ my-crypto-desk/
 ├─ main.js
 ├─ live-reports.js
 └─ assets/
-   └─ images/
+   ├─ images/
+   └─ screenshots/
 ```
 ---
 
