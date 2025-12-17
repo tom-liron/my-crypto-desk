@@ -4,6 +4,21 @@ A lightweight **vanilla JavaScript** crypto dashboard to browse market coins, pi
 
 ---
 
+## Screenshots
+
+### Markets
+![Markets page](assets/screenshots/markets.png)
+
+### Live Reports
+![Live reports charts](assets/screenshots/live-reports.png)
+
+### Favorites Limit Dialog
+![Favorites limit dialog](assets/screenshots/limit-dialog.png)
+
+*Browse coins, flip cards for details, and select favorites.*
+
+---
+
 ## Features
 
 ### Markets (index.html)
