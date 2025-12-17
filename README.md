@@ -42,8 +42,8 @@ A lightweight **vanilla JavaScript** crypto dashboard to browse market coins, pi
 ---
 
 ## Project Structure
-
-mycryptodesk/
+```text
+my-crypto-desk/
 ├─ index.html
 ├─ live-reports.html
 ├─ about.html
@@ -51,8 +51,8 @@ mycryptodesk/
 ├─ main.js
 ├─ live-reports.js
 └─ assets/
-└─ images/
-
+   └─ images/
+```
 ---
 
 ## How to Run
