@@ -1,0 +1,673 @@
+    /* RESET & BASE */
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        position: fixed;
+        z-index: 1000;
+        width: 100%;
+        display: flex;
+        /* switched from grid to flex */
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #1a1a1a;
+        color: white;
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex: 1;
+        /* helps center links */
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+        color: #ffcc00;
+    }
+
+    /* SEARCH */
+    .search-container {
+        position: relative;
+        max-width: 220px;
+        width: 100%;
+        transform: translateX(-80px);
+    }
+
+    .search-input {
+        padding: 0.5rem 2.5rem 0.5rem 1rem;
+        border-radius: 50px;
+        border: none;
+        width: 100%;
+        font-size: 14px;
+        background-color: #f2f2f2;
+        height: 40px;
+        box-sizing: border-box;
+        transition: box-shadow 0.2s ease;
+    }
+
+    .search-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #ffcc00;
+    }
+
+    .clear-icon {
+        position: absolute;
+        top: 50%;
+        right: 6px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 18px;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        background-color: #ddd;
+        color: #333;
+        border-radius: 50%;
+        display: none;
+        transition: background-color 0.2s;
+        user-select: none;
+    }
+
+    .clear-icon:hover {
+        background-color: #bbb;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .navbar {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .nav-links {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            margin: 0 auto;
+        }
+    }
+
+    /* CARD CONTAINER */
+    #cardsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 24px;
+        margin-top: 80px;
+    }
+
+    /* COIN CARD */
+    .coin-card {
+        position: relative;
+        width: 220px;
+        height: 250px;
+        perspective: 1000px;
+    }
+
+    .card-inner {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s ease;
+        transform-style: preserve-3d;
+        position: relative;
+        border: 1px solid black;
+        border-radius: 12px;
+
+    }
+
+    .coin-card.flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        padding: 16px 18px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    /* FRONT SIDE */
+    .card-front {
+        text-align: center;
+    }
+
+    .switch-wrapper {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .coin-icon {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        margin: 20px 0 12px;
+    }
+
+    .coin-card h3 {
+        font-size: 17px;
+        margin: 0 0 6px;
+        color: #333;
+    }
+
+
+    .coin-symbol,
+    .card-front h5 {
+        font-size: 13px;
+        color: #777;
+        margin: 0 0 14px;
+    }
+
+    .coin-card button {
+        padding: 8px 14px;
+        font-size: 14px;
+        background-color: #2a9df4;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: auto;
+        transition: background-color 0.2s;
+    }
+
+    .coin-card button:hover {
+        background-color: #1b7cc5;
+    }
+
+    /* BACK SIDE */
+    .card-back {
+        transform: rotateY(180deg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* ✅ CARD BACK INNER LAYOUT */
+    .card-back-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        padding: 16px 18px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* we'll push content down manually */
+        align-items: center;
+    }
+
+    /* ✅ CONTENT AREA */
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        margin-top: 38px;
+        box-sizing: border-box;
+        padding: 16px;
+
+        /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); soft inner depth */
+    }
+
+    .card-content p {
+        font-size: 14px;
+        color: #333;
+        line-height: 1.4;
+        margin: 0;
+        padding-left: 8px;
+        /* small indent */
+        padding-right: 8px;
+        text-align: left;
+        width: 100%;
+        max-width: 180px;
+        background-color: transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* ✅ BACK BUTTON MATCHES FRONT POSITION */
+    .card-back .back-btn {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #2a9df4;
+        padding: 8px 14px;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: white;
+        border: none;
+    }
+
+    .card-back .back-btn:hover {
+        background-color: #1b7cc5;
+    }
+
+    /* SWITCH */
+    .switch-label {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+    }
+
+    .switch-label input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 34px;
+        transition: 0.4s;
+    }
+
+    .slider::before {
+        content: "";
+        position: absolute;
+        height: 16px;
+        width: 16px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        border-radius: 50%;
+        transition: 0.4s;
+    }
+
+    .switch-label input:checked+.slider {
+        background-color: #2196f3;
+    }
+
+    .switch-label input:checked+.slider::before {
+        transform: translateX(20px);
+    }
+
+    .price-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        max-width: 180px;
+        padding-left: 20px;
+        font-size: 14px;
+        /* Ensures consistency */
+        line-height: 1.5;
+    }
+
+    .price-row .symbol {
+        display: inline-block;
+        width: 18px;
+        text-align: right;
+        font-size: 14px;
+        /* Match parent font size */
+        transform: translateY(1px);
+        /* Small adjustment if needed */
+    }
+
+    .error-message {
+        font-size: 14px;
+        color: #d00 !important;
+        ;
+        text-align: center !important;
+        ;
+        margin: 0 auto;
+        padding: 8px;
+    }
+
+    #coinLimitDialog {
+        padding: 24px;
+        border-radius: 12px;
+        background-color: #1e1e1e;
+        color: #fff;
+        width: 300px;
+        border: none;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    }
+
+    #coinLimitDialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    #dialogContent {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 16px 0;
+    }
+
+    .dialog-option {
+        display: flex;
+        align-items: center;
+        background-color: #2c2c2c;
+        padding: 10px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .dialog-option:hover {
+        background-color: #3a3a3a;
+    }
+
+    .dialog-option input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    #confirmReplaceBtn,
+    #cancelDialogBtn {
+        padding: 8px 16px;
+        margin: 8px 4px 0 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    #confirmReplaceBtn {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    #cancelDialogBtn {
+        background-color: #f44336;
+        color: white;
+    }
+
+    /* Live Reports Section Styling */
+    #liveSection {
+        padding: 24px;
+        background-color: #f5f5f5;
+        color: #333;
+        text-align: center;
+        border-top: 1px solid #ddd;
+        min-height: 300px;
+    }
+
+    #liveSection .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+    }
+
+    /* Container for chart and status messages */
+    #liveReportsContainer {
+        margin-bottom: 16px;
+    }
+
+    /* Info message styling */
+    .info-message {
+        font-size: 1rem;
+        color: #777;
+        transition: opacity 0.3s ease;
+    }
+
+    .info-message.hidden {
+        opacity: 0;
+        pointer-events: none;
+        height: 0;
+        overflow: hidden;
+    }
+
+    /* Chart area */
+    #chart {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* === CHARTS GRID (Compact + Responsive) === */
+    #chartsGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .chart-box {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 12px 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chart-box h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        color: #444;
+    }
+
+    .chart-box>div {
+        width: 100%;
+        height: 240px;
+        /* 🔽 Reduced from 300px */
+        max-width: 100%;
+    }
+
+    .chart-box>div {
+        width: 100%;
+        height: 220px;
+        /* Smaller, readable height */
+        max-height: 220px;
+        overflow: hidden;
+    }
+
+    .chart-box .apexcharts-canvas {
+        height: 100% !important;
+        max-height: 100% !important;
+    }
+
+    /* Limit chart height */
+    #percentageChart,
+    #usdPriceChart {
+        max-width: 800px;
+        max-height: 300px;
+        margin: 0 auto;
+    }
+
+
+    /* Center the live report section title */
+    #liveSection h2 {
+        text-align: center;
+        margin-bottom: 24px;
+        font-size: 1.8rem;
+    }
+
+    /* Graph container styling */
+    .chart-wrapper {
+        background-color: #ffffff;
+        border: 1px solid black;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 0 auto 50px auto;
+        max-width: 800px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    #parallaxMarket {
+        background-image: url('assets/images/backgroundCrypto.webp');
+        /* use correct path */
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+
+    /* Optional: improve card readability */
+    .cards-container {
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    #liveSection {
+        background-image: url('assets/images/backgroundCrypto.webp');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 60px 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    /* h2 heading inside the parallax section */
+    #liveSection h2 {
+        font-size: 2.5rem;
+        color: #ffffff;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+        margin-bottom: 40px;
+        letter-spacing: 1px;
+    }
+
+    #messageArea {
+        line-height: 1.8;
+        margin: 2rem auto;
+        max-width: 700px;
+        padding: 1rem;
+        text-align: center;
+        display: none;
+        /* initially hidden */
+    }
+
+    .info-box {
+        background-color: #e6f7ff;
+        color: #004085;
+        border: 1px solid #b8daff;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        font-size: 1rem;
+    }
+
+    .error-box {
+        margin-top: 70px;
+        border: 1px solid black;
+        background-color: #ffffff;
+        color: black;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        font-size: 1rem;
+    }
+
+    .go-to-markets {
+        display: inline-block;
+        margin-top: 1rem;
+        background-color: #2a9df4;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .go-to-markets:hover {
+        background-color: #1b7cc5;
+        transform: scale(1.05);
+    }
+
+    #usdWrapper {
+        margin-top: 84px;
+    }
+
+
+    .about-page {
+        padding: 40px 20px;
+        max-width: 870px;
+        margin: auto;
+        font-family: Arial, sans-serif;
+        color: #333;
+    
+    }
+
+    .about-content {
+        text-align: start;
+    }
+
+    .profile-pic {
+        width: 280px;
+        height: auto;
+        border-radius: 1rem;
+        object-fit: cover;
+        margin: 80px auto 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border: 1px solid #000;
+        display: block;
+    }
+
+    .about-content h1,
+    .about-content h2 {
+         text-align: center;
+        margin-top: 20px;
+        color: #222;
+    }
+
+    .about-content p {
+        line-height: 1.6;
+        margin-top: 10px;
+    }

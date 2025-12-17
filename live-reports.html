@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Server | MyCryptoDesk</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script defer src="main.js"></script>
+    <script defer src="live-reports.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">MyCryptoDesk</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Markets</a></li>
+            <li><a href="live-reports.html">Live Reports</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+            <span class="clear-icon" id="clearBtn">&times;</span>
+        </div>
+    </nav>
+
+<section id="liveSection">
+
+  <div id="messageArea"></div>
+
+  <div id="usdWrapper" class="chart-wrapper">
+    <div id="usdPriceChart"></div>
+  </div>
+
+  <div id="percentageWrapper" class="chart-wrapper">
+    <div id="percentageChart"></div>
+  </div>
+</section>
+
+</body>
+
+</html>

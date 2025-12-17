@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | MyCryptoDesk</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="main.js"></script>
+    <script defer src="live-reports.js"></script>
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <a href="index.html" class="logo">MyCryptoDesk</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Markets</a></li>
+            <li><a href="live-reports.html">Live Reports</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+            <span class="clear-icon" id="clearBtn">&times;</span>
+        </div>
+    </nav>
+
+    <main id="parallaxMarket">
+        <section id="cardsContainer" class="cards-container"></section>
+    </main>
+
+    <dialog id="coinLimitDialog">
+        <form method="dialog">
+            <h3>Maximum Limit Reached</h3>
+            <p id="coinLimitMessage"></p>
+            <div id="dialogContent"></div>
+            <button id="confirmReplaceBtn">Confirm</button>
+            <button id="cancelDialogBtn">Cancel</button>
+        </form>
+    </dialog>
+
+</body>
+
+</html>
